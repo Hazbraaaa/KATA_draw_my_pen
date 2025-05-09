@@ -13,26 +13,44 @@ const penCalendar = {
     june: 1,
 };
 
+const fullRubberMonths = [
+    "september",
+    "october",
+    "november",
+    "december",
+    "january",
+    "febuary"
+]
 
 // init functions
 
-function drawMyPen(month) {
+function drawLead() {
     console.log(" /\\ \n/__\\");
+}
 
-
-    if (penCalendar.hasOwnProperty(month)) {
-        for (i = 0 ; i < penCalendar[month] ; i++) {
-            console.log("||||");
-        }
+function drawBody(month) {
+    for (i = 0 ; i < penCalendar[month]; i++) {
+        console.log("||||");
     }
-
     console.log("|__|");
+}
 
-    if (!(month === 'march' || month === 'april' || month === 'may' || month === 'june')) {
+function drawRubber(month) {
+    if (fullRubberMonths.includes(month)) {
         console.log("|  |");
     }
-
     console.log("|__|");
+}
+
+function drawMyPen(month) {
+    if (!penCalendar.hasOwnProperty(month)) {
+        console.log("Are you sure you have school ?");
+        return;
+    }
+    console.log(`My pen in ${month} is :`)
+    drawLead();
+    drawBody(month);
+    drawRubber(month);
 }
 
 
